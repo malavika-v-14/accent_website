@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EventCategory {
+  ACCENT_TALK
+  TECHNICAL_TALK
+  INDUSTRIAL_VISIT
+  WORKSHOP
+  CERTIFICATION
+}
+
+model Event {
+  id          String        @id @default(cuid())
+  title       String
+  category    EventCategory
+  date        DateTime
+  location    String
+  description String
+  isActive    Boolean       @default(true)
+  createdAt   DateTime      @default(now())
+
+  @@index([isActive, date])
+}
+
+model MoUApplication {
+  id            String   @id @default(cuid())
+  institution   String
+  contactName   String
+  email         String
+  phone         String
+  department    String?
+  notes         String?
+  createdAt     DateTime @default(now())
+}
+
+model ConsultationRequest {
+  id          String   @id @default(cuid())
+  company     String
+  contactName String
+  email       String
+  teamSize    String?
+  interest    String
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  subject   String?
+  message   String
+  createdAt DateTime @default(now())
+}

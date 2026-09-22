@@ -1,0 +1,225 @@
+{
+  "checks": [
+    {
+      "name": "Homepage renders",
+      "passed": true
+    },
+    {
+      "name": "Hero photo loads",
+      "passed": true
+    },
+    {
+      "name": "Corporate services switch",
+      "passed": true
+    },
+    {
+      "name": "Service detail expands",
+      "passed": true
+    },
+    {
+      "name": "Ecosystem tab switches content",
+      "passed": true
+    },
+    {
+      "name": "Ecosystem keyboard navigation",
+      "passed": true
+    },
+    {
+      "name": "Corporate deep link and consultation form",
+      "passed": true
+    },
+    {
+      "name": "College toggle and MoU form",
+      "passed": true
+    },
+    {
+      "name": "FAQ expands",
+      "passed": true
+    },
+    {
+      "name": "Event category filter",
+      "passed": true
+    },
+    {
+      "name": "Contact labels and native validation",
+      "passed": true
+    },
+    {
+      "name": "/ has no horizontal overflow at 390px",
+      "passed": true
+    },
+    {
+      "name": "/ images load at 390px",
+      "passed": true
+    },
+    {
+      "name": "/about has no horizontal overflow at 390px",
+      "passed": true
+    },
+    {
+      "name": "/about images load at 390px",
+      "passed": true
+    },
+    {
+      "name": "/programs has no horizontal overflow at 390px",
+      "passed": true
+    },
+    {
+      "name": "/programs images load at 390px",
+      "passed": true
+    },
+    {
+      "name": "/events has no horizontal overflow at 390px",
+      "passed": true
+    },
+    {
+      "name": "/events images load at 390px",
+      "passed": true
+    },
+    {
+      "name": "/contact has no horizontal overflow at 390px",
+      "passed": true
+    },
+    {
+      "name": "/contact images load at 390px",
+      "passed": true
+    },
+    {
+      "name": "/ has no horizontal overflow at 768px",
+      "passed": true
+    },
+    {
+      "name": "/ images load at 768px",
+      "passed": true
+    },
+    {
+      "name": "/about has no horizontal overflow at 768px",
+      "passed": true
+    },
+    {
+      "name": "/about images load at 768px",
+      "passed": true
+    },
+    {
+      "name": "/programs has no horizontal overflow at 768px",
+      "passed": true
+    },
+    {
+      "name": "/programs images load at 768px",
+      "passed": true
+    },
+    {
+      "name": "/events has no horizontal overflow at 768px",
+      "passed": true
+    },
+    {
+      "name": "/events images load at 768px",
+      "passed": true
+    },
+    {
+      "name": "/contact has no horizontal overflow at 768px",
+      "passed": true
+    },
+    {
+      "name": "/contact images load at 768px",
+      "passed": true
+    },
+    {
+      "name": "/ has no horizontal overflow at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/ images load at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/about has no horizontal overflow at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/about images load at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/programs has no horizontal overflow at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/programs images load at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/events has no horizontal overflow at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/events images load at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/contact has no horizontal overflow at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/contact images load at 1024px",
+      "passed": true
+    },
+    {
+      "name": "/ has no horizontal overflow at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/ images load at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/about has no horizontal overflow at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/about images load at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/programs has no horizontal overflow at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/programs images load at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/events has no horizontal overflow at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/events images load at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/contact has no horizontal overflow at 1440px",
+      "passed": true
+    },
+    {
+      "name": "/contact images load at 1440px",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu opens",
+      "passed": true
+    },
+    {
+      "name": "Escape closes mobile menu",
+      "passed": true
+    },
+    {
+      "name": "Reduced-motion preference respected",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript runtime errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}
