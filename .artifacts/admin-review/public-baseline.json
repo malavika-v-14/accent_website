@@ -1,0 +1,8 @@
+{
+  "src/app/globals.css": "44aeb8d83f6487a99ced493ca9345bb19075fd3ea67600a15e78bee9bf49ba78",
+  "src/components/Hero.tsx": "4f37be6543c83514463addf2a98298bf1910ecda1da35e7d0f6f8331eb2b4ea3",
+  "src/components/Navbar.tsx": "aac670695ef82984defa8db37b2550c6f2f96d53b8f80c7a1c9f294f04c6e973",
+  "src/components/Footer.tsx": "6e1bb9c93fcc60707cc36f900d01c73aaa555b5426fc0d166950e3a034c8d602",
+  "src/components/EcosystemExplorer.tsx": "bc102c472824b9e4fd932a2bccb8c2a4579df98b80cb86a5b20228c8b5eb15f4",
+  "src/components/ClosingCta.tsx": "5227a963a0a847bfb1dd1286e8bee511c846da2c3627362bcd903adb4010dadc"
+}

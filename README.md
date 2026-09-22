@@ -60,6 +60,26 @@ Poppins loads from Google Fonts, with a system sans-serif fallback. Google Maps 
 
 Events remain demonstration data in `src/lib/events.ts`; the UI refresh does not change database integration. Form endpoints and Prisma models are preserved.
 
+## Admin module
+
+A password-protected admin area lives at `/admin` (separate layout, no public Navbar/Footer, so it never affects the public pages):
+
+- `/admin` – dashboard with counts of published/draft events and new enquiries.
+- `/admin/events` – create, edit, publish/unpublish events.
+- `/admin/inquiries` – review and update status/notes on contact messages, MoU applications and consultation requests.
+- `/admin/services` – edit the college/company service catalog text shown on the public Services section.
+- `/admin/account` – change the signed-in admin's password.
+
+Sessions are server-side (hashed tokens in `AdminSession`), passwords are hashed with scrypt, and login is rate-limited. Run the schema update once, then create your first login:
+
+\`\`\`sh
+npm run db:generate
+npm run db:push
+npm run admin:create -- --email you@accent.com --password "ChooseAStrongPassword1" --name "Your Name"
+\`\`\`
+
+Then sign in at `/admin/login`. Run `npm run admin:create` again any time to reset that email's password.
+
 ## Verification
 
 The production build and TypeScript checks pass. A headless Chrome review checked all five pages at 390, 768, 1024 and 1440px, visible image loading, horizontal overflow, service expansion, audience deep links, the two enquiry forms, ecosystem keyboard navigation, event filtering, FAQs, mobile navigation and reduced motion. All 55 checks passed with no JavaScript runtime errors.

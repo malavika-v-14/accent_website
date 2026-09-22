@@ -37,6 +37,11 @@ model MoUApplication {
   department    String?
   notes         String?
   createdAt     DateTime @default(now())
+  status        InquiryStatus @default(NEW)
+  adminNotes    String?
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  @@index([status, createdAt])
 }
 
 model ConsultationRequest {
@@ -48,6 +53,11 @@ model ConsultationRequest {
   interest    String
   notes       String?
   createdAt   DateTime @default(now())
+  status      InquiryStatus @default(NEW)
+  adminNotes  String?
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  @@index([status, createdAt])
 }
 
 model ContactMessage {
@@ -57,4 +67,56 @@ model ContactMessage {
   subject   String?
   message   String
   createdAt DateTime @default(now())
+  status    InquiryStatus @default(NEW)
+  adminNotes String?
+  updatedAt DateTime @default(now()) @updatedAt
+
+  @@index([status, createdAt])
+}
+
+
+enum InquiryStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  ARCHIVED
+}
+
+model AdminUser {
+  id           String @id @default(cuid())
+  email        String @unique
+  name         String
+  passwordHash String
+  isActive     Boolean @default(true)
+  createdAt    DateTime @default(now())
+  sessions     AdminSession[]
+}
+
+model AdminSession {
+  id        String @id @default(cuid())
+  tokenHash String @unique
+  adminId   String
+  admin     AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@index([expiresAt])
+}
+
+model AdminLoginAttempt {
+  key       String @id
+  count     Int @default(1)
+  expiresAt DateTime
+
+  @@index([expiresAt])
+}
+
+model ServiceContent {
+  id          String @id
+  title       String
+  tag         String
+  description String
+  details     String[]
+  updatedAt   DateTime @default(now()) @updatedAt
 }

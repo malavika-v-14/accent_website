@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
-import ServiceCatalog from "@/components/ServiceCatalog";
+import ServiceCatalog from "@/components/ManagedServiceCatalog";
 import EcosystemExplorer from "@/components/EcosystemExplorer";
 import ClosingCta from "@/components/ClosingCta";
 import { IconGraduate, IconBriefcase } from "@/components/icons";

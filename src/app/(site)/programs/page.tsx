@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ServiceCatalog from "@/components/ServiceCatalog";
+import ServiceCatalog from "@/components/ManagedServiceCatalog";
 export const metadata: Metadata = {title: "Services — Accent", description: "Technical workshops, talks, certifications, industrial visits and MoUs for colleges. Engagement, soft skills and upskilling for employees."};
 const faqs = [
   ["How do we choose the right program?", "Start with your audience and learning goals. Share your priorities with Accent and we can discuss the most relevant service or a combination of programs."],
