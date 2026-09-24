@@ -1,8 +1,9 @@
 import type { EventItem } from "@/types";
+import { prisma } from "@/lib/db";
+import { categoryLabels } from "@/lib/event-categories";
 
-// Placeholder data so the /events page renders before a database is wired
-// up. Once DATABASE_URL is set and `prisma db push` has run, swap the body
-// of getEvents() below for the Prisma query underneath.
+// Placeholder data so the /events page still renders if DATABASE_URL isn't
+// set yet (e.g. a fresh checkout before the database is wired up).
 const fallbackEvents: EventItem[] = [
   {
     id: "1",
@@ -43,16 +44,18 @@ const fallbackEvents: EventItem[] = [
 ];
 
 export async function getEvents(): Promise<EventItem[]> {
-  // Once a database is connected, replace this with something like:
-  //
-  // import { prisma } from "@/lib/db";
-  // const events = await prisma.event.findMany({
-  //   where: { isActive: true },
-  //   orderBy: { date: "asc" },
-  // });
-  // return events.map(toEventItem);
+  if (!process.env.DATABASE_URL) {
+    return fallbackEvents.filter((event) => event.isActive).sort((a, b) => a.date.localeCompare(b.date));
+  }
 
-  return fallbackEvents
-    .filter((event) => event.isActive)
-    .sort((a, b) => a.date.localeCompare(b.date));
+  const events = await prisma.event.findMany({ where: { isActive: true }, orderBy: { date: "asc" } });
+  return events.map((event) => ({
+    id: event.id,
+    title: event.title,
+    category: categoryLabels[event.category] as EventItem["category"],
+    date: event.date.toISOString().slice(0, 10),
+    location: event.location,
+    description: event.description,
+    isActive: event.isActive,
+  }));
 }

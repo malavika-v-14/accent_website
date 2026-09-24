@@ -34,6 +34,7 @@ export default async function EventsPage({ searchParams }: { searchParams: { vis
                 <th>Date</th>
                 <th>Location</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -44,6 +45,7 @@ export default async function EventsPage({ searchParams }: { searchParams: { vis
                   <td>{new Date(event.date).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</td>
                   <td>{event.location}</td>
                   <td><span className="admin-badge" data-status={event.isActive ? "PUBLISHED" : "DRAFT"}>{event.isActive ? "Published" : "Draft"}</span></td>
+                  <td><Link className="admin-text-link" href={`/admin/events/${event.id}`}>Edit{event.isActive ? "" : " / Publish"} →</Link></td>
                 </tr>
               ))}
             </tbody>

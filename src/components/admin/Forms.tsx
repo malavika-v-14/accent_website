@@ -30,6 +30,7 @@ export function LoginForm() {
 export type EditableEvent = { id?: string; title: string; category: string; date: string; location: string; description: string; isActive: boolean };
 export function EventForm({ event }: { event?: EditableEvent }) {
   const router = useRouter(); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
+  const today = new Date().toISOString().slice(0, 10);
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault(); setBusy(true); setError("");
     const data = Object.fromEntries(new FormData(e.currentTarget));
