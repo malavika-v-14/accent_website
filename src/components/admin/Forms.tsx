@@ -39,7 +39,7 @@ export function EventForm({ event }: { event?: EditableEvent }) {
       router.push("/admin/events?saved=1"); router.refresh();
     } catch(e) { setError(e instanceof Error ? e.message : "Unable to save event."); setBusy(false); }
   }
-  return <form className="admin-form" onSubmit={submit}><label>Event title<input className="field" name="title" required maxLength={180} defaultValue={event?.title} /></label><div className="admin-form-grid"><label>Category<select className="field" name="category" defaultValue={event?.category || "WORKSHOP"}>{Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label>Event date<input className="field" name="date" type="date" required defaultValue={event?.date} /></label></div><label>Location<input className="field" name="location" required maxLength={180} defaultValue={event?.location} placeholder="Kozhikode, Kerala or Online" /></label><label>Description<textarea className="field" name="description" rows={5} required maxLength={3000} defaultValue={event?.description} /></label><label>Visibility<select className="field" name="isActive" defaultValue={event?.isActive ? "true" : "false"}><option value="false">Draft — only visible to admins</option><option value="true">Published — visible on the events page</option></select></label><Notice error={error} /><div className="admin-form-actions"><button className="admin-button" disabled={busy}>{busy ? "Saving…" : "Save event"}</button><button type="button" className="admin-button admin-button-outline" disabled={busy} onClick={() => router.push("/admin/events")}>Cancel</button></div></form>;
+  return <form className="admin-form" onSubmit={submit}><label>Event title<input className="field" name="title" required maxLength={180} defaultValue={event?.title} /></label><div className="admin-form-grid"><label>Category<select className="field" name="category" defaultValue={event?.category || "WORKSHOP"}>{Object.entries(categoryLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label><label>Event date<input className="field" name="date" type="date" required min={event ? undefined : today} defaultValue={event?.date} /></label></div><label>Location<input className="field" name="location" required maxLength={180} defaultValue={event?.location} placeholder="Kozhikode, Kerala or Online" /></label><label>Description<textarea className="field" name="description" rows={5} required maxLength={3000} defaultValue={event?.description} /></label><label>Visibility<select className="field" name="isActive" defaultValue={event?.isActive ? "true" : "false"}><option value="false">Draft — only visible to admins</option><option value="true">Published — visible on the events page</option></select></label><Notice error={error} /><div className="admin-form-actions"><button className="admin-button" disabled={busy}>{busy ? "Saving…" : "Save event"}</button><button type="button" className="admin-button admin-button-outline" disabled={busy} onClick={() => router.push("/admin/events")}>Cancel</button></div></form>;
 }
 
 export function DeleteEvent({ id, title }: { id: string; title: string }) {
@@ -50,6 +50,21 @@ export function DeleteEvent({ id, title }: { id: string; title: string }) {
     catch(e) { setError(e instanceof Error ? e.message : "Unable to delete event."); setBusy(false); }
   }
   return <div className="admin-delete"><h2>Delete event</h2><p>To hide this event while keeping its details, save it as a draft instead.</p>{confirming ? <div role="group" aria-label="Confirm event deletion"><p>Delete “{title}” permanently?</p><div className="admin-form-actions"><button className="admin-button admin-button-danger" disabled={busy} onClick={remove}>{busy ? "Deleting…" : "Delete permanently"}</button><button className="admin-button admin-button-outline" disabled={busy} onClick={() => setConfirming(false)}>Keep event</button></div></div> : <button className="admin-button admin-button-outline" onClick={() => setConfirming(true)}>Delete this event</button>}<Notice error={error} /></div>;
+}
+
+export function DeleteEventInline({ id, title }: { id: string; title: string }) {
+  const router = useRouter(); const [busy, setBusy] = useState(false);
+  async function remove() {
+    if (!window.confirm(`Delete "${title}" permanently? This can't be undone.`)) return;
+    setBusy(true);
+    try { await request(`/api/admin/events/${id}`, "DELETE", {}); router.push("/admin/events?deleted=1"); router.refresh(); }
+    catch (e) { window.alert(e instanceof Error ? e.message : "Unable to delete event."); setBusy(false); }
+  }
+  return <button type="button" className="admin-icon-button admin-icon-button-danger" disabled={busy} onClick={remove} aria-label={`Delete ${title}`} title="Delete">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /><path d="M10 11v6" /><path d="M14 11v6" />
+    </svg>
+  </button>;
 }
 
 export function InquiryForm({ kind, id, status, notes }: { kind: string; id: string; status: string; notes: string }) {

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { prisma } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/auth";
 import { categoryLabels } from "@/lib/event-categories";
+import { DeleteEventInline } from "@/components/admin/Forms";
 
 export default async function EventsPage({ searchParams }: { searchParams: { visibility?: string; saved?: string; deleted?: string } }) {
   await requireAdmin();
@@ -33,7 +34,8 @@ export default async function EventsPage({ searchParams }: { searchParams: { vis
                 <th>Category</th>
                 <th>Date</th>
                 <th>Location</th>
-                <th>Status</th>
+                                <th>Status</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -46,6 +48,7 @@ export default async function EventsPage({ searchParams }: { searchParams: { vis
                   <td>{event.location}</td>
                   <td><span className="admin-badge" data-status={event.isActive ? "PUBLISHED" : "DRAFT"}>{event.isActive ? "Published" : "Draft"}</span></td>
                   <td><Link className="admin-text-link" href={`/admin/events/${event.id}`}>Edit{event.isActive ? "" : " / Publish"} →</Link></td>
+                  <td><DeleteEventInline id={event.id} title={event.title} /></td>
                 </tr>
               ))}
             </tbody>

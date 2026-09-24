@@ -635,3 +635,38 @@
 .admin-service-item summary::before { content: "▸"; display: inline-block; margin-right: 8px; color: var(--accent); transition: transform 0.15s ease; }
 .admin-service-item[open] summary::before { transform: rotate(90deg); }
 .admin-service-item .admin-form { margin-top: 1.1rem; max-width: none; }
+.admin-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #4b6355;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.admin-icon-button:hover {
+  background: var(--mint);
+  color: var(--forest);
+}
+.admin-icon-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.admin-icon-button-danger {
+  color: #9f2727;
+}
+.admin-icon-button-danger:hover {
+  background: #fbeaea;
+  border-color: #e5a3a3;
+  color: #7f1e1e;
+}
+.admin-table th:last-child,
+.admin-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
