@@ -1,0 +1,3 @@
+import type { Metadata } from "next"; import ResourceGrid from "@/components/ResourceGrid";
+export const metadata: Metadata = { title: "Free resources — Accent", description: "Practical guides and templates for job seekers, colleges and teams." };
+export default function ResourcesPage() { return <><section className="audience-hero wrap"><p className="section-kicker"><span /> FREE RESOURCES</p><h1>Start with something useful.</h1><p>Practical checklists, plans and templates for your next step. Final downloadable files will be added soon.</p></section><section className="resources-section wrap"><ResourceGrid /></section></>; }
