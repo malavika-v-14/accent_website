@@ -245,8 +245,13 @@ h2 em {
   color: var(--forest);
 }
 .accent-logo svg {
-  width: 37px;
-  height: 40px;
+  width: 150px;
+  height: 70px;
+  flex-shrink: 0;
+}
+.site-header .accent-logo {
+  transform: translateX(-10px) scale(0.9);
+  transform-origin: left center;
 }
 .accent-logo>span {
   font-size: 10px;
@@ -1682,8 +1687,8 @@ h2 em {
     font-size: 30px;
   }
   .accent-logo svg {
-    width: 31px;
-    height: 35px;
+    width: 126px;
+    height: 58.8px;
   }
   .desktop-nav,.nav-cta {
     display: none;
