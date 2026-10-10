@@ -15,7 +15,11 @@ export default async function InquiriesPage({ searchParams }: { searchParams: { 
   const status = searchParams.status && Object.hasOwn(statusLabels, searchParams.status) ? (searchParams.status as InquiryStatus) : undefined;
   const q = (searchParams.q || "").trim();
   const page = Math.max(1, Number(searchParams.page) || 1);
-  const { rows, total } = await getInquiries(kind, q, status, page);
+  let unavailable = false;
+  let rows: Awaited<ReturnType<typeof getInquiries>>["rows"] = [];
+  let total = 0;
+  try { ({ rows, total } = await getInquiries(kind, q, status, page)); }
+  catch { unavailable = true; }
   const totalPages = Math.max(1, Math.ceil(total / 20));
 
   const linkFor = (overrides: { status?: string; page?: number }) => {
@@ -41,6 +45,7 @@ export default async function InquiriesPage({ searchParams }: { searchParams: { 
           <Link key={k} href={`/admin/inquiries?kind=${k}`} className={k === kind ? "active" : undefined}>{kindLabels[k]}</Link>
         ))}
       </div>
+      {unavailable && <p className="admin-notice admin-notice-error" role="alert">The enquiry database is temporarily unavailable. Please try again when the connection recovers.</p>}
       <form className="admin-toolbar" action="/admin/inquiries" method="get">
         <input type="hidden" name="kind" value={kind} />
         <input className="field" type="search" name="q" placeholder="Search by name or email…" defaultValue={q} />
@@ -50,7 +55,7 @@ export default async function InquiriesPage({ searchParams }: { searchParams: { 
         </select>
         <button className="admin-button admin-button-outline" type="submit">Filter</button>
       </form>
-      {rows.length ? (
+      {!unavailable && rows.length ? (
         <div className="admin-panel admin-table-panel">
           <table className="admin-table">
             <thead>
@@ -78,12 +83,12 @@ export default async function InquiriesPage({ searchParams }: { searchParams: { 
             </tbody>
           </table>
         </div>
-      ) : (
+      ) : !unavailable ? (
         <div className="admin-empty">
           <h3>No enquiries found.</h3>
           <p>Try a different filter or search.</p>
         </div>
-      )}
+      ) : null}
       {totalPages > 1 && (
         <div className="admin-pagination">
           {page > 1 ? <Link href={linkFor({ page: page - 1 })}>← Previous</Link> : <span>← Previous</span>}

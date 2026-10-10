@@ -1,3 +1,4 @@
+import { InquiryButton } from "./Inquiry";
 import type { EventItem } from "@/types";
 import { iconForEventCategory } from "@/components/icons";
 
@@ -52,7 +53,7 @@ export default function EventCard({ event }: { event: EventItem }) {
       </div>
       <div className="shrink-0 text-sm font-medium text-ink-soft sm:pl-4 sm:text-right">
         <div className="text-forest-deep">{formatDate(event.date)}</div>
-        <div>{event.location}</div>
+        <div>{event.location}</div><InquiryButton kind="master" offering={event.title} className="action-text mt-4">Reserve your seat ↗</InquiryButton>
       </div>
     </div>
   );

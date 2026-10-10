@@ -4,7 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import AccentMark from "@/components/AccentMark";
 
-const links = [["/admin", "Overview", "01"], ["/admin/events", "Events", "02"], ["/admin/inquiries", "Enquiries", "03"], ["/admin/services", "Services", "04"], ["/admin/account", "Account", "05"]];
+const links = [["/admin", "Overview", "01"], ["/admin/events", "Events", "02"], ["/admin/inquiries", "Enquiries", "03"], ["/admin/reports", "Reports", "04"], ["/admin/content", "Content", "05"], ["/admin/services", "Services", "06"], ["/admin/account", "Account", "07"]];
 export default function AdminNav({ name }: { name: string }) {
   const path = usePathname(); const router = useRouter();
   const [busy, setBusy] = useState(false); const [error, setError] = useState("");

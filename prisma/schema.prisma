@@ -120,3 +120,23 @@ model ServiceContent {
   details     String[]
   updatedAt   DateTime @default(now()) @updatedAt
 }
+
+model ContentOverride {
+  key       String   @id
+  title     String
+  description String
+  button    String?
+  status    String?
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  type      String
+  page      String?
+  audience  String?
+  createdAt DateTime @default(now())
+
+  @@index([type, createdAt])
+  @@index([createdAt])
+}

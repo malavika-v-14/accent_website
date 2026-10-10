@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./ui-refinements.css";
 
 export const metadata: Metadata = {
-  title: "Accent — A learning ecosystem out of Kozhikode",
+  title: "Accent — Master classes, mentorship and practical learning",
   description:
     "Accent runs technical workshops, mentorship and industry programs for college students and working professionals, out of Kozhikode, Kerala since 2017.",
 };

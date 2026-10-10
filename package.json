@@ -10,7 +10,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "admin:create": "node scripts/create-admin.mjs"
+    "admin:create": "node scripts/create-admin.mjs",
+    "events:seed-demo": "node --env-file=.env scripts/seed-demo-events.mjs"
   },
   "dependencies": {
     "@prisma/client": "^5.19.0",
