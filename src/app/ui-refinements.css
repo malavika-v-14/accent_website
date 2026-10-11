@@ -38,6 +38,7 @@
 .new-footer .inquiry-form .btn-dark {background:var(--mint);color:var(--forest);border:1px solid var(--mint);border-radius:10px;min-height:46px;padding:12px 26px;grid-column:1/-1;box-shadow:0 4px 14px #00000012}
 .new-footer .inquiry-form .btn-dark:hover {background:white;transform:translateY(-2px)}
 .new-footer .footer-main {grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:30px}
+.new-footer .footer-main>div:first-child p {font-size:16px;line-height:1.6;letter-spacing:normal}
 .new-footer .footer-main>div:not(:first-child) a {font-size:13px;padding-block:5px}
 .new-footer .footer-bottom {gap:20px;flex-wrap:wrap;padding-bottom:36px}
 .inquiry-dialog .btn-dark {border-radius:10px;min-height:46px;padding:12px 24px}

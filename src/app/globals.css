@@ -1179,11 +1179,11 @@ h2 em {
   padding-bottom: 55px;
 }
 .footer-main>div:first-child p {
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 16px;
+  line-height: 1.6;
   color: #fff;
-  margin: 22px 0;
-  letter-spacing: -.4px;
+  margin: 18px 0;
+  letter-spacing: normal;
 }
 .footer-location {
   font-size: 10px;
